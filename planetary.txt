@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="keywords" content="universo, planetas, espacio" />
+  <meta name="description" content="Información sobre el universo y los planetas" />
+  <meta name="author" content="Tu Nombre" />
+  <title>Explorando el Universo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      background: linear-gradient(90deg, #003366, #001f3f);
+      padding: 40px;
+      font-size: 2.5em;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+    .container {
+      width: 90%;
+      margin: 20px auto;
+    }
+    .box {
+      display: flex;
+      align-items: center;
+      background-color: #1b1b1b;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+    }
+    .box:hover {
+      transform: scale(1.02);
+    }
+    .box img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-right: 20px;
+      transition: box-shadow 0.3s ease;
+    }
+    .box img:hover {
+      box-shadow: 0 0 20px 5px #00aaff;
+    }
+    .text {
+      width: calc(100% - 220px);
+      overflow-wrap: break-word;
+    }
+    .text h2 {
+      color: #00aaff;
+    }
+    @media (max-width: 768px) {
+      .box {
+        flex-direction: column;
+        text-align: center;
+      }
+      .box img {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+        height: auto;
+      }
+      .text {
+        width: 100%;
+      }
+    }
+    #visitas {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 1.2em;
+    }
+    footer {
+      background-color: #0a0a0a;
+      padding: 20px;
+      text-align: center;
+      margin-top: 40px;
+    }
+    footer a {
+      color: #00aaff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-size: 1.2em;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">Explorando el Universo</div>
+
+  <div class="container">
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Solar_sys8.jpg" alt="Sistema Solar">
+      <div class="text">
+        <h2>El Sistema Solar</h2>
+        <p>El sistema solar está compuesto por el Sol y todos los cuerpos celestes que orbitan a su alrededor, incluyendo planetas, asteroides y cometas.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Planeta Tierra">
+      <div class="text">
+        <h2>El Planeta Tierra</h2>
+        <p>La Tierra es el único planeta conocido que alberga vida. Tiene una atmósfera rica en oxígeno y agua en estado líquido.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" alt="Marte">
+      <div class="text">
+        <h2>Marte: El Planeta Rojo</h2>
+        <p>Marte es conocido como el planeta rojo debido a la presencia de óxido de hierro en su superficie. Se cree que pudo haber tenido agua en el pasado.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://th.bing.com/th/id/OIP.aBxMsTDueJ0OEYpqcoZb7wHaEK?rs=1&pid=ImgDetMain" alt="Mercurio">
+      <div class="text">
+        <h2>Mercurio</h2>
+        <p>Mercurio es el planeta más cercano al Sol y el más pequeño del sistema solar. Tiene temperaturas extremas debido a su falta de atmósfera significativa.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" alt="Venus">
+      <div class="text">
+        <h2>Venus</h2>
+        <p>Venus es el planeta más caliente del sistema solar debido a su densa atmósfera de dióxido de carbono, que provoca un efecto invernadero extremo.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Júpiter">
+      <div class="text">
+        <h2>Júpiter</h2>
+        <p>Júpiter es el planeta más grande del sistema solar y posee una enorme tormenta llamada la Gran Mancha Roja, que ha existido por siglos.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Urano">
+      <div class="text">
+        <h2>Urano</h2>
+        <p>Urano es un planeta gigante de hielo que rota de lado, lo que lo hace único en el sistema solar.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Neptuno">
+      <div class="text">
+        <h2>Neptuno</h2>
+        <p>Neptuno es el planeta más alejado del Sol y tiene los vientos más rápidos del sistema solar, alcanzando hasta 2,100 km/h.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <img src="https://mi.astrocentro.com/vss/astrocenter/pictures/29642756-adobestock-250121615.jpeg" alt="Saturno">
+      <div class="text">
+        <h2>Saturno</h2>
+        <p>Saturno es conocido por sus impresionantes anillos compuestos principalmente de hielo y roca. Es el segundo planeta más grande del sistema solar.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="visitas">
+    <p>Número de visitas: <span id="contador">0</span></p>
+  </div>
+
+  <footer>
+    <a href="https://www.instagram.com/nasa/" target="_blank">@NASA Instagram</a> |
+    <a href="https://www.facebook.com/NASA/" target="_blank">@NASA Facebook</a> |
+    <a href="https://www.nasa.gov/" target="_blank">NASA Oficial Page</a>
+  </footer>
+
+  <script>
+    // Contador de visitas usando localStorage
+    let visitas = localStorage.getItem('contadorVisitas');
+    if (visitas === null) {
+      visitas = 1;
+    } else {
+      visitas = parseInt(visitas) + 1;
+    }
+    localStorage.setItem('contadorVisitas', visitas);
+    document.getElementById('contador').innerText = visitas;
+  </script>
+</body>
+</html>
