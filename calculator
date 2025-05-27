@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Unidades</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 50px;
+            transition: background-color 0.5s ease;
+            background-color: #f5f5f7;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        input, select, button {
+            margin: 10px;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+        }
+        button {
+            background-color: #007aff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #005ecb;
+        }
+        .info {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 15px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            display: inline-block;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="font-weight: 500; color: #333;">Conversor de Unidades</h2>
+    <div class="container">
+        <input type="number" id="valueInput" placeholder="Ingrese el valor">
+        <select id="unitType" onchange="updateUnitOptions()">
+            <option value="temperature">Temperatura</option>
+            <option value="distance">Distancia</option>
+            <option value="mass">Masa</option>
+            <option value="speed">Velocidad</option>
+            <option value="data">Datos Informáticos</option>
+            <option value="area">Área</option>
+            <option value="time">Tiempo</option>
+        </select>
+        <select id="fromUnit"></select>
+        <select id="toUnit"></select>
+        <button onclick="convertUnit()">Convertir</button>
+        <h3 id="result"></h3>
+    </div>
+    
+    <div class="info" id="weather">Cargando clima...</div>
+    <div class="info" id="news">Cargando noticias...</div>
+    <div class="info" id="ads">Publicidad: ¡Oferta especial en calculadoras!</div>
+
+    <script>
+        const unitOptions = {
+            temperature: { C: 'Celsius', F: 'Fahrenheit', K: 'Kelvin' },
+            distance: { m: 'Metros', km: 'Kilómetros', mi: 'Millas', yd: 'Yardas' },
+            mass: { g: 'Gramos', kg: 'Kilogramos', lb: 'Libras', oz: 'Onzas' },
+            speed: { ms: 'm/s', kmh: 'km/h', mph: 'mph' },
+            data: { B: 'Bytes', KB: 'Kilobytes', MB: 'Megabytes', GB: 'Gigabytes' },
+            area: { sqm: 'm²', sqkm: 'km²', acre: 'Acres', sqmi: 'Millas²' },
+            time: { sec: 'Segundos', min: 'Minutos', hr: 'Horas', day: 'Días' }
+        };
+
+        function updateUnitOptions() {
+            const unitType = document.getElementById('unitType').value;
+            const fromUnit = document.getElementById('fromUnit');
+            const toUnit = document.getElementById('toUnit');
+            fromUnit.innerHTML = '';
+            toUnit.innerHTML = '';
+            
+            for (let key in unitOptions[unitType]) {
+                fromUnit.innerHTML += `<option value="${key}">${unitOptions[unitType][key]}</option>`;
+                toUnit.innerHTML += `<option value="${key}">${unitOptions[unitType][key]}</option>`;
+            }
+        }
+
+        function convertUnit() {
+            let value = parseFloat(document.getElementById('valueInput').value);
+            let from = document.getElementById('fromUnit').value;
+            let to = document.getElementById('toUnit').value;
+            let unitType = document.getElementById('unitType').value;
+            let result;
+            
+            if (isNaN(value)) {
+                document.getElementById('result').innerText = "Por favor, ingrese un número válido.";
+                return;
+            }
+
+            const conversions = {
+                temperature: { C: v => v, F: v => (v * 9/5) + 32, K: v => v + 273.15 },
+                distance: { m: v => v, km: v => v / 1000, mi: v => v / 1609, yd: v => v * 1.094 },
+                mass: { g: v => v, kg: v => v / 1000, lb: v => v / 453.592, oz: v => v / 28.35 },
+                speed: { ms: v => v, kmh: v => v * 3.6, mph: v => v * 2.237 },
+                data: { B: v => v, KB: v => v / 1024, MB: v => v / 1048576, GB: v => v / 1073741824 },
+                area: { sqm: v => v, sqkm: v => v / 1e6, acre: v => v / 4046.86, sqmi: v => v / 2.59e6 },
+                time: { sec: v => v, min: v => v / 60, hr: v => v / 3600, day: v => v / 86400 }
+            };
+            
+            result = conversions[unitType][to](conversions[unitType]['C'] ? conversions[unitType]['C'](value) : value);
+            document.getElementById('result').innerText = `${value} ${unitOptions[unitType][from]} = ${result.toFixed(2)} ${unitOptions[unitType][to]}`;
+        }
+        
+        document.getElementById('valueInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                convertUnit();
+            }
+        });
+
+        function fetchWeather() {
+            document.getElementById('weather').innerText = "Clima actual: Soleado, 25°C";
+        }
+        function fetchNews() {
+            document.getElementById('news').innerText = "Noticias: La NASA descubre un nuevo exoplaneta.";
+        }
+        
+        setTimeout(fetchWeather, 2000);
+        setTimeout(fetchNews, 3000);
+        updateUnitOptions();
+    </script>
+</body>
+</html>
